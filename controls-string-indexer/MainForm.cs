@@ -18,11 +18,13 @@ namespace controls_string_indexer
             {
                 for (int j = 0; j < mapSize && !foundPos; j++)
                 {
-                    var pcb = new PictureBox();
-                    pcb.Name = "pcb" + i + "" + j;
-                    pcb.Margin = new Padding(0);
-                    pcb.Size = new Size(slotSize, slotSize);
-                    pcb.Location = new Point(0 + i * slotSize, 0 + j * slotSize);
+                    var pcb = new PictureBox
+                    {
+                        Name = $"pcb{i}{j}",
+                        Size = new Size(slotSize, slotSize),
+                        Location = new Point(0 + i * slotSize, 0 + j * slotSize),
+                        BackColor = Color.LightBlue,
+                    };
                     pcb.Left += 50;
                     pcb.Top += 50;
                     // Skip the colors so this example can set them below
@@ -32,15 +34,9 @@ namespace controls_string_indexer
                     Debug.WriteLine(pcb.Name);
                 }
             }
-            Controls["pcb00"].BackColor = Color.Red;
-            Controls["pcb01"].BackColor = Color.LightBlue;
-            Controls["pcb02"].BackColor = Color.Green;
-            Controls["pcb10"].BackColor = Color.Yellow;
-            Controls["pcb11"].BackColor = Color.Purple;
-            Controls["pcb12"].BackColor = Color.Orange;
-            Controls["pcb20"].BackColor = Color.Pink;
-            Controls["pcb21"].BackColor = Color.Brown;
-            Controls["pcb22"].BackColor = Color.Gray;
+            Controls["pcb00"].BackColor = Color.White;
+            Controls["pcb01"].BackColor = Color.Gray;
+            Controls["pcb12"].BackColor = Color.Yellow;
         }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "controls-string-indexer", "controls=string-indexer\controls-string-indexer.csproj", "{DCE36BDB-E984-4F51-9C7D-50EDA8C70282}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "controls-string-indexer", "controls-string-indexer\controls-string-indexer.csproj", "{DCE36BDB-E984-4F51-9C7D-50EDA8C70282}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
