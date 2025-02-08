@@ -4,43 +4,75 @@ namespace controls_string_indexer
 {
     public partial class MainForm : Form
     {
+        TableLayoutPanel currMap;
         public MainForm()
         {
             InitializeComponent();
-
-            // Set some values so example can compile
-            const int mapSize = 3, slotSize = 100;
-            bool foundPos = false;
-            int[,] currMap = new int[mapSize, mapSize];
-            // ========================================
-
-            for (int i = 0; i < mapSize && !foundPos; i++)
+            const int DIM = 3;
+            Padding = new Padding(25);
+            currMap = new TableLayoutPanel
             {
-                for (int j = 0; j < mapSize && !foundPos; j++)
+                Dock = DockStyle.Fill,
+                RowCount = DIM,
+                ColumnCount = DIM,
+                BackColor = Color.LightBlue,
+                Padding = new Padding(2),
+            }; 
+            Controls.Add(currMap);
+            int autoIncrement = 0;
+            for (int col = 0; col < DIM; col++)
+            {
+                currMap.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1));
+                for (int row = 0; row < DIM; row++)
                 {
-                    var pcb = new PictureBox();
-                    pcb.Name = "pcb" + i + "" + j;
-                    pcb.Margin = new Padding(0);
-                    pcb.Size = new Size(slotSize, slotSize);
-                    pcb.Location = new Point(0 + i * slotSize, 0 + j * slotSize);
-                    pcb.Left += 50;
-                    pcb.Top += 50;
-                    // Skip the colors so this example can set them below
-                    this.Controls.Add(pcb);
-                    pcb.BorderStyle = BorderStyle.FixedSingle;
-
-                    Debug.WriteLine(pcb.Name);
+                    currMap.RowStyles.Add(new RowStyle(SizeType.Percent, 1));
+                    var pcb = new SmartSquare
+                    {
+                        Name = $"pcb{col}{row}",
+                        ValueForDemo = autoIncrement++, 
+                    };
+                    currMap.Controls.Add(pcb, col, row);
                 }
             }
-            Controls["pcb00"].BackColor = Color.Red;
-            Controls["pcb01"].BackColor = Color.LightBlue;
-            Controls["pcb02"].BackColor = Color.Green;
-            Controls["pcb10"].BackColor = Color.Yellow;
-            Controls["pcb11"].BackColor = Color.Purple;
-            Controls["pcb12"].BackColor = Color.Orange;
-            Controls["pcb20"].BackColor = Color.Pink;
-            Controls["pcb21"].BackColor = Color.Brown;
-            Controls["pcb22"].BackColor = Color.Gray;
+            currMap.Controls["pcb20"].BackColor = Color.Red;
+            currMap.GetControlFromPosition(2,1).BackColor = Color.Green;
         }
+    }
+    class SmartSquare : PictureBox
+    {
+        public SmartSquare() 
+        { 
+            Margin = new Padding(2);
+            Dock = DockStyle.Fill;
+            BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        public int ValueForDemo
+        {
+            get => _valueForDemo;
+            set
+            {
+                if (!Equals(_valueForDemo, value))
+                {
+                    _valueForDemo = value;
+                    switch (_valueForDemo)
+                    {
+                        case 0:
+                            BackColor = Color.White;
+                            break;
+                        case 1:
+                            BackColor = Color.Gray;
+                            break;
+                        case 5:
+                            BackColor = Color.Yellow;
+                            break;
+                        default:
+                            BackColor = Color.Transparent;
+                            break;
+                    }
+                }
+            }
+        }
+        int _valueForDemo = int.MinValue;
     }
 }
