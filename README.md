@@ -1,4 +1,4 @@
-You've done the right thing by naming them before adding them to the `Controls` collection. **You don't need to do anything else**, thanks to the [string indexer](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/using-indexers#example-2) of the `Controls` collection, just refer to a control (for example) as `Controls["pcb01"]` as shown in the working minimal example below.
+You're doing the right thing by naming the PictureBox controls before adding them to the `Controls` collection. **You don't need to do anything else**, thanks to the [string indexer](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/using-indexers#example-2) of the `Controls` collection, just refer to a control (for example) as `Controls["pcb01"]` as shown in the working minimal example below.
 
 ~~~
 public partial class MainForm : Form
