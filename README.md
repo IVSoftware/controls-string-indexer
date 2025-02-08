@@ -1,1 +1,1 @@
-# controls=string-indexer
+###### Refer to master branch [ReadMe](https://github.com/IVSoftware/controls-string-indexer/blob/master/README.md)
